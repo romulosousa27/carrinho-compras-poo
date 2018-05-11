@@ -29,17 +29,18 @@
 					<td> <?php echo $product->getId(); ?> </td>
 					<td> <?php echo $product->getName(); ?> </td>
 					<td> <?php echo number_format($product->getPrice(), 2, ',', '.'); ?> </td>
-					<td></td>
+					<td>
+                        <form action="index.php?page=cart&action=add" method="post">
+                            <input name="id" type="hidden" value="<?php echo $product->getId() ?>">
+                            <button type="submit" class="btn btn-primary">Add ao carrinho</button>
+                        </form>
+                    </td>
 				</tr>
-            <?php endforeach; ?>
+            <?php endforeach ?>
 			</tbody>
 		</table>
 	</div>
 
 
-
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
