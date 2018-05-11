@@ -21,7 +21,7 @@ class ProductRepositoryPDO implements ProductRepository {
 
     public function getProduct($id){
         $stmt = $this->pdo->prepare("SELECT * FROM product WHERE id = :id");
-        $stmt->blindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, \PDO::PARAM_INT);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Model\Product\Product');
         $stmt->execute();
 
