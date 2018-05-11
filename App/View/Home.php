@@ -15,20 +15,23 @@
 
 		<table class="table table-striped">
 			<thead>
-				<tr>
+                <tr>
 					<th>#</th>
 					<th>Produto</th>
 					<th>Preço</th>
 					<th></th>
 				</tr>
+
 			</thead>
 			<tbody>
+            <?php foreach ($products as $product) :?>
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td> <?php echo $product->getId(); ?> </td>
+					<td> <?php echo $product->getName(); ?> </td>
+					<td> <?php echo number_format($product->getPrice(), 2, ',', '.'); ?> </td>
 					<td></td>
 				</tr>
+            <?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>
