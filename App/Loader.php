@@ -3,8 +3,7 @@
 namespace App;
 
 class Loader{
-	
-	
+
 	public function register(){
 		spl_autoload_register(array($this,  'autoload'));	
 	}
