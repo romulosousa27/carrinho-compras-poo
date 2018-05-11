@@ -1,12 +1,13 @@
 <?php 
-
+session_start();
 define("DIR", dirname(__FILE__));
 define("DS", DIRECTORY_SEPARATOR);
 
+use App\Model\Product\ProductRepositoryPDO;
+use App\Model\Shopping\CartSession;
 use App\Controller\Cart;
 use App\Controller\Home;
 use App\Loader;
-use App\Model\Product\ProductRepositoryPDO;
 
 include_once DIR.DS.'App'.DS.'Loader.php';
 
@@ -24,7 +25,8 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 switch ($page) {
 	case 'cart':
 	    //instancia
-		$cart = new Cart();
+        $sessionCart = new CartSession();
+		$cart = new Cart($productRepository, $sessionCart);
 		call_user_func_array(array($cart, $action), array());
 		break;
 	
